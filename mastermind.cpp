@@ -20,8 +20,6 @@ int main() {
   generateRandomCode();
   cout << endl;
 
-  cout << "You have " << chancesRemaining << " attempts to break the code.\n";
-
   // Prints codeElements
   cout << "Code colors: ";
   for (int i = 0; i < 6; i++) {
@@ -44,6 +42,7 @@ int main() {
   // cout << endl;
 
   // Prompt player to make a guess
+  cout << "You have " << chancesRemaining << " attempts to break the code.\n";
   getPlayerInput();
   cout << endl;
 
