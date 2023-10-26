@@ -9,7 +9,7 @@ using namespace std;
 string codeElements[6] = {"RD", "BU", "YW", "GN", "WH", "BK"};
 string randomCode[4] = {};
 
-int chancesRemaining = 12;
+int chancesRemaining = 8;
 
 void generateRandomCode();
 void getPlayerInput();
@@ -100,7 +100,7 @@ void evaluatePlayerInput(string playerInput[4]) {
 
   // Evaluate lose condition
   if (chancesRemaining == 0) {
-    cout << "YOU LOSE!";
+    cout << "YOU LOSE!\n";
     cout << "Solution: ";
     for (int i = 0; i < 4; i++) {
       cout << "[" << randomCode[i] << "]";
