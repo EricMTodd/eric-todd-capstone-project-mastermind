@@ -6,43 +6,41 @@
 
 using namespace std;
 
-
-
-const string codeElements[8] = {"RD", "BU", "YW", "GN", "WH", "BK"};
-const string keyElements[2] = {"BK", "WH"};
-
-int difficulty = 12;
-int guessesRemaining = 12;
-
-string guessHistory[12] = {};
-string feedbackHistory[12] = {};
+string codeElements[6] = {"RD", "BU", "YW", "GN", "WH", "BK"};
 
 string randomCode[4] = {};
-string playerGuess[4] = {};
 
 void generateRandomCode();
 void getPlayerInput();
-void evaluatePlayerInput();
-void provideEngineFeedback();
+void validatePlayerInput(string playerInput[4]);
+void evaluatePlayerInput(string playerInput[4]);
 
 int main() {
-  // Read from leaderbaord file, displaying usernames and scores
-  // Press enter key to start a new game, or q to quit.
-  // Input a player name
-  // Select difficulty
-  // Start timer
 
-  // The core game loop starts here.
-  // Generate random code to be broken [X]
-  // Prompt for player guess [X]
-  // If the guess is correct, the player wins and their score is recorded. They are sent back to the main menu.
-  // If the guess is incorrect, appropriate feedback is provided to the player and 1 is subtracted from the player's remaining guesses.
-  // If the player fails to break the code, the code is revealed, their score is recorded and they are sent back to the main menu.
 
 
   generateRandomCode();
+  cout << endl;
+
+  // Prints codeElements
+  cout << "Code colors: ";
+  for (int i = 0; i < 6; i++) {
+    cout << "[" << codeElements[i] << "]";
+  }
+  cout << endl;
+
+  // Prints randomCode
+  // cout << "randomCode: ";
+  // for (int i = 0; i < 4; i++) {
+  //   cout << "[" << randomCode[i] << "]";
+  // }
+  // cout << endl;
+
+  // Prompt player to make a guess
   getPlayerInput();
-  provideEngineFeedback();
+  cout << endl;
+
+  
 
   return 0;
 }
@@ -56,49 +54,33 @@ void generateRandomCode() {
 };
 
 void getPlayerInput() {
-    cout << "randomCode: ";
-  for (int i = 0; i < 4; i++) {
-    cout << randomCode[i] << " ";
-  }
-  cout << endl;
-  cout << "Attempt to break the code!\nYour options are: RD, BU, YW, GN, WH, and BK.\nType four color options with a space between each one to make your guess.\n\nEnter code: ";
-  cin >> playerGuess[0] >> playerGuess[1] >> playerGuess[2] >> playerGuess[3];
-  evaluatePlayerInput();
-}
+  string playerInput[4];
+  cout << "Input guess: ";
+  cin >> playerInput[0] >> playerInput[1] >> playerInput[2] >> playerInput[3];
+  validatePlayerInput(playerInput);
+};
 
-void evaluatePlayerInput() {
+void validatePlayerInput(string playerInput[4]) {
   for (int i = 0; i < 4; i++) {
-    if (playerGuess[i] == codeElements[0]) {
-      continue;
-    } else if (playerGuess[i] == codeElements[1]) {
-      continue;
-    } else if (playerGuess[i] == codeElements[2]) {
-      continue;
-    } else if (playerGuess[i] == codeElements[3]) {
-      continue;
-    } else if (playerGuess[i] == codeElements[4]) {
-      continue;
-    } else if (playerGuess[i] == codeElements[5]) {
+    if (playerInput[i] == codeElements[0] || playerInput[i] == codeElements[1] || playerInput[i] == codeElements[2] || playerInput[i] == codeElements[3] || playerInput[i] == codeElements[4] || playerInput[i] == codeElements[5]) {
       continue;
     } else {
-      cout << "\n\n***PLEASE INPUT A VALID CODE***\n\n";
-      getPlayerInput();
+      cout << "\n***INVALID INPUT***\nPlease try again.\n";
+      return getPlayerInput();
     }
   }
-  cout << endl;
+  return evaluatePlayerInput(playerInput);
 }
 
-void provideEngineFeedback() {
+void evaluatePlayerInput(string playerInput[4]) {
+  cout << "Feedback: ";
   for (int i = 0; i < 4; i++) {
-    if (playerGuess[i] == randomCode[i]) {
-      cout << "\nRight color, right position.";
+    if (playerInput[i] == randomCode[i]) {
+      cout << "[WH]";
+    } else if (playerInput[i] == randomCode[0] || playerInput[i] == randomCode[1] || playerInput[i] == randomCode[2] || playerInput[i] == randomCode[3]) {
+      cout << "[BK]";
     } else {
-      if (playerGuess[i] == randomCode[0] || playerGuess[i] == randomCode[1] || playerGuess[i] == randomCode[2] || playerGuess[i] == randomCode[3]) {
-        cout << "\nRight color, wrong position.";
-      } else {
-        cout << "\nWrong color.";
-      }
+      cout << "[RD]";
     }
   }
-  cout << endl;
 }
