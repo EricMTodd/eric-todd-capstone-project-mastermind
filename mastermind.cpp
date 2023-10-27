@@ -73,7 +73,7 @@ int main() {
 // Generates a random code
 void generateRandomCode() {
   srand((unsigned) time(NULL));
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < 4; i++) {
     int random = rand() % 6;
     randomCode[i] = codeElements[random];
   };
