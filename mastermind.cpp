@@ -1,67 +1,57 @@
+// Preprocessors
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cstdlib>
 #include <bits/stdc++.h>
 #include <chrono>
-
+// Namespaces
 using namespace std;
 using namespace chrono;
-
 // Variable declarations
 string codeElements[6] = {"RD", "BU", "YW", "GN", "WH", "BK"};
 string randomCode[4] = {};
 int chancesRemaining = 8;
 int timeElapsed;
 int score;
-
 // Function declarations
 void generateRandomCode();
 void getPlayerInput();
 void validatePlayerInput(string playerInput[4]);
 void evaluatePlayerInput(string playerInput[4]);
-
 // Main function
 int main() {
   // Generate random code to be broken
   generateRandomCode();
   cout << endl;
-
-  // Start timer
-  auto start = steady_clock::now();
-
   // Prints codeElements
   cout << "Code colors: ";
   for (int i = 0; i < 6; i++) {
     cout << "[" << codeElements[i] << "]";
   }
   cout << endl << endl;
-
   // Defines clues for the player
   cout << "Feedback key: " << endl;
   cout << "[WH] = Right color, right position." << endl;
   cout << "[RD] = Right color, wrong position." << endl;
   cout << "[  ] = Wrong color." << endl;
   cout << endl;
-
+  // Start timer
+  auto start = steady_clock::now();
   // Start core game loop.
   cout << "You have " << chancesRemaining << " attempts to break the code.\n";
   getPlayerInput();
   cout << endl;
-
   // Stop timer
   auto stop = steady_clock::now() - start;
   timeElapsed = duration_cast<milliseconds>(stop).count();
-
   // Assign score
   score = (9 - chancesRemaining) * timeElapsed;
   cout << "Your score is: " << score << endl << endl  ;
-
+  // Terminate program
   return 0;
 }
-
 // Function definitions
-
 // Generates a random code
 void generateRandomCode() {
   srand((unsigned) time(NULL));
@@ -70,7 +60,6 @@ void generateRandomCode() {
     randomCode[i] = codeElements[random];
   };
 };
-
 // Gathers input from the player
 void getPlayerInput() {
   string playerInput[4];
@@ -78,7 +67,6 @@ void getPlayerInput() {
   cin >> playerInput[0] >> playerInput[1] >> playerInput[2] >> playerInput[3];
   validatePlayerInput(playerInput);
 };
-
 // Verifies clean inputs
 void validatePlayerInput(string playerInput[4]) {
   for (int i = 0; i < 4; i++) {
@@ -91,7 +79,6 @@ void validatePlayerInput(string playerInput[4]) {
   }
   return evaluatePlayerInput(playerInput);
 }
-
 // Evaluates player guesses and provides appropriate feedback
 void evaluatePlayerInput(string playerInput[4]) {
   // Evaluate win condition
