@@ -1,4 +1,4 @@
 # eric-todd-capstone-project-mastermind
 
 Notes:
-- Create a development branch from the working main branch.
+- Make a timer using the chrono library.

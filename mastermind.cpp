@@ -3,13 +3,17 @@
 #include <string>
 #include <cstdlib>
 #include <bits/stdc++.h>
+#include <chrono>
 
 using namespace std;
+using namespace chrono;
 
 // Variable declarations
 string codeElements[6] = {"RD", "BU", "YW", "GN", "WH", "BK"};
 string randomCode[4] = {};
 int chancesRemaining = 8;
+int timeElapsed;
+int score;
 
 // Function declarations
 void generateRandomCode();
@@ -22,6 +26,9 @@ int main() {
   // Generate random code to be broken
   generateRandomCode();
   cout << endl;
+
+  // Start timer
+  auto start = steady_clock::now();
 
   // Prints codeElements
   cout << "Code colors: ";
@@ -41,6 +48,14 @@ int main() {
   cout << "You have " << chancesRemaining << " attempts to break the code.\n";
   getPlayerInput();
   cout << endl;
+
+  // Stop timer
+  auto stop = steady_clock::now() - start;
+  timeElapsed = duration_cast<milliseconds>(stop).count();
+
+  // Assign score
+  score = (9 - chancesRemaining) * timeElapsed;
+  cout << "Your score is: " << score << endl << endl  ;
 
   return 0;
 }
@@ -81,7 +96,7 @@ void validatePlayerInput(string playerInput[4]) {
 void evaluatePlayerInput(string playerInput[4]) {
   // Evaluate win condition
   if (playerInput[0] == randomCode[0] && playerInput[1] == randomCode[1] && playerInput[2] == randomCode[2] && playerInput[3] == randomCode[3]) {
-    cout << "YOU WIN!";
+    cout << "\nYOU WIN!";
     return;
   } else {
     // Provide clues to the player
@@ -96,7 +111,6 @@ void evaluatePlayerInput(string playerInput[4]) {
       }
     }
     chancesRemaining--;
-    cout << "\n\nChances remaining: " << chancesRemaining << endl;
   }
   // Evaluate lose condition
   if (chancesRemaining == 0) {
@@ -107,6 +121,7 @@ void evaluatePlayerInput(string playerInput[4]) {
     }
     return;
   } else {
+    cout << "\n\nChances remaining: " << chancesRemaining << endl;
     return getPlayerInput();
   }
 }
