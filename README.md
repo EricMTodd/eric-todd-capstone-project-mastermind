@@ -14,7 +14,7 @@
 7. If the lose condition is not met, feedback is provided to player.
 8. Return to step 1.
 
-Tasks:
+## Tasks:
 - Implement file I/O
   - Determine a data scructure for player's and scores. (Likely class instantion).
   - Leaderboard will be an array with only 10 available spots.
