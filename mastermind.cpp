@@ -34,7 +34,7 @@ int main() {
   cout << "Feedback key: " << endl;
   cout << "[WH] = Right color, right position." << endl;
   cout << "[RD] = Right color, wrong position." << endl;
-  cout << "[BK] = Wrong color." << endl;
+  cout << "[  ] = Wrong color." << endl;
   cout << endl;
 
   // Start core game loop.
@@ -92,7 +92,7 @@ void evaluatePlayerInput(string playerInput[4]) {
       } else if (playerInput[i] == randomCode[0] || playerInput[i] == randomCode[1] || playerInput[i] == randomCode[2] || playerInput[i] == randomCode[3]) {
         cout << "[RD]";
       } else {
-        cout << "[BK]";
+        cout << "[  ]";
       }
     }
     chancesRemaining--;
