@@ -1,3 +1,8 @@
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX // 
+  // Name: Eric Todd //
+  // Date: 10.29.2023 //
+  // Assignment: Capstone Project - Mastermind //
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX // 
 // Preprocessors
 #include <iostream>
 #include <fstream>
@@ -24,18 +29,31 @@ int main() {
   // Generate random code to be broken
   generateRandomCode();
   cout << endl;
+  // Print game title
+  cout << "----------------\n";
+  cout << "   MASTERMIND\n";
+  cout << "----------------\n";
+  // Rules
+  // Establish goals
+  cout << "You are attempting to break a randomly generated 4 color code combination made up of six possible colors. These colors can be in any order, and in any number." << endl;
+  // Establish input pattern
+  cout << "Type any 4 of the letter combinations listed below, seperated by a space. " << endl << endl;
   // Prints codeElements
   cout << "Code colors: ";
   for (int i = 0; i < 6; i++) {
     cout << "[" << codeElements[i] << "]";
   }
   cout << endl << endl;
+  cout << "After you have input your desired guess, hit the enter key. The engine will provide feeback based on your guess in order to provide clues to the solution." << endl << endl;
   // Defines clues for the player
   cout << "Feedback key: " << endl;
   cout << "[WH] = Right color, right position." << endl;
   cout << "[RD] = Right color, wrong position." << endl;
   cout << "[  ] = Wrong color." << endl;
   cout << endl;
+  cout << "You will be scored after you win or lose. You want the lowest score possible. Your score is calculated based on how many attempts you made, and how long it took for you to (or fail to) break the code." << endl << endl;
+  // glhf
+  cout << "Good luck, have fun!" << endl << endl;
   // Start timer
   auto start = steady_clock::now();
   // Start core game loop.
