@@ -1,7 +1,7 @@
 # eric-todd-capstone-project-mastermind
 
 ## Notes:
-### ClASS REQUIREMENT
+### CLASS REQUIREMENT
 - Three major control structures exist. Input validation, win/lose conditions, and engine feeback.
 - Repetitive actions such as user input and input evaluation will be broken down into functions.
 
