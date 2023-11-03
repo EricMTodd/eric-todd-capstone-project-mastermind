@@ -19,3 +19,7 @@
   - Determine a data scructure for player's and scores. (Likely class instantion).
   - Leaderboard will be an array with only 10 available spots.
   - New players are treated as an 11th option for the leaderboard[10], and after scoring are sorted into the leaderboard[10].
+
+  - File will be read and data loaded into a variable.
+  - After the game finishes, the player is sorted into the high scores array and new bottom score is removed if the new player achieves a place on the board.
+  - The variable is written to the leaderboard file.
