@@ -13,6 +13,22 @@
 // Namespaces
 using namespace std;
 using namespace chrono;
+// Classes
+class Player {
+  public:
+    string name;
+    int score;
+
+    void print() {
+      cout << "Name: " << name << endl;
+      cout << "Score: " << score << endl;
+    }
+
+  Player() {
+    name = "EMPTY";
+    score = 0;
+  }
+};
 // Variable declarations
 string codeElements[6] = {"RD", "BU", "YW", "GN", "WH", "BK"};
 string randomCode[4] = {};
@@ -24,8 +40,12 @@ void generateRandomCode();
 void getPlayerInput();
 void validatePlayerInput(string playerInput[4]);
 void evaluatePlayerInput(string playerInput[4]);
+void load();
+void save();
 // Main function
 int main() {
+  load();
+
   // Generate random code to be broken
   generateRandomCode();
   cout << endl;
@@ -33,6 +53,7 @@ int main() {
   cout << "----------------\n";
   cout << "   MASTERMIND\n";
   cout << "----------------\n";
+  cout << endl << endl;
   // Rules
   // Establish goals
   cout << "You are attempting to break a randomly generated 4 color code combination made up of six possible colors. These colors can be in any order, and in any number." << endl;
@@ -129,4 +150,12 @@ void evaluatePlayerInput(string playerInput[4]) {
     cout << "\n\nChances remaining: " << chancesRemaining << endl;
     return getPlayerInput();
   }
+}
+// Loads leaderboard
+void load() {
+
+}
+// Saves leaderboard
+void save() {
+
 }

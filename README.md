@@ -23,3 +23,6 @@
   - File will be read and data loaded into a variable.
   - After the game finishes, the player is sorted into the high scores array and new bottom score is removed if the new player achieves a place on the board.
   - The variable is written to the leaderboard file.
+  - Leaderboard will have to be an array of player objects, sorted in descending order by score.
+
+  - Figure out how to write an array of objects to a file. Combine array io techniques with object io techniques. Something about whitespace... Check that youtube video again: https://www.youtube.com/watch?v=SPfJ856eEN4&t=395s
