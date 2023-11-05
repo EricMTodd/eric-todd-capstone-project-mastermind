@@ -16,22 +16,23 @@ using namespace chrono;
 // Classes
 class Player {
   public:
-    string name;
+    char name[3];
     int score;
 
     void print() {
-      cout << "Name: " << name << endl;
+      for (int i = 0; i < 3; i++) {
+        cout << name[i];
+      }
+      cout << endl;
       cout << "Score: " << score << endl;
     }
 
-  Player() {
-    name = "EMPTY";
-    score = 0;
-  }
+
 };
 // Variable declarations
 string codeElements[6] = {"RD", "BU", "YW", "GN", "WH", "BK"};
 string randomCode[4] = {};
+string playerName;
 int chancesRemaining = 8;
 int timeElapsed;
 int score;
@@ -44,7 +45,6 @@ void load();
 void save();
 // Main function
 int main() {
-  load();
 
   // Generate random code to be broken
   generateRandomCode();
@@ -53,6 +53,12 @@ int main() {
   cout << "----------------\n";
   cout << "   MASTERMIND\n";
   cout << "----------------\n";
+  cout << endl << endl;
+  // Display leaderboard
+  load();
+  // Get player name
+  cout << "Please enter your name to begin: ";
+  cin >> playerName;
   cout << endl << endl;
   // Rules
   // Establish goals
@@ -86,7 +92,9 @@ int main() {
   timeElapsed = duration_cast<milliseconds>(stop).count();
   // Assign score
   score = (9 - chancesRemaining) * timeElapsed;
-  cout << "Your score is: " << score << endl << endl  ;
+  cout << "Your score is: " << score << endl << endl;
+  // Save player score and display leaderboard ranking
+  save();
   // Terminate program
   return 0;
 }
@@ -153,9 +161,33 @@ void evaluatePlayerInput(string playerInput[4]) {
 }
 // Loads leaderboard
 void load() {
-
+  fstream file;
+  file.open("leaderboard.txt");
+  if (!file) {
+    cout << "Running first time setup..." << endl << endl;
+    ofstream file("leaderboard.txt");
+  } else {
+    Player player;
+    file.read((char*)&player, sizeof(player));
+    player.print();
+  }
 }
 // Saves leaderboard
 void save() {
+  Player newPlayer;
+  char newPlayerName[3];
 
+  for (int i = 0; i < playerName.length(); i++) {
+    cout << playerName[i];
+    newPlayerName[i] = playerName[i];
+  }
+  newPlayer.score = score;
+
+  newPlayer.print();
+
+  fstream file;
+  file.open("leaderboard.txt", ios::out);
+  if (file.is_open()) {
+    file.write((char*)&newPlayer, sizeof(newPlayer));
+  }
 }
