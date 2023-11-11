@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <bits/stdc++.h>
 #include <chrono>
+#include <cstring>
 // Namespaces
 using namespace std;
 using namespace chrono;
@@ -20,9 +21,7 @@ class Player {
     int score;
 
     void print() {
-      for (int i = 0; i < 3; i++) {
-        cout << name[i];
-      }
+      cout << name;
       cout << endl;
       cout << "Score: " << score << endl;
     }
@@ -32,7 +31,7 @@ class Player {
 // Variable declarations
 string codeElements[6] = {"RD", "BU", "YW", "GN", "WH", "BK"};
 string randomCode[4] = {};
-string playerName;
+char playerName[3];
 int chancesRemaining = 8;
 int timeElapsed;
 int score;
@@ -55,44 +54,44 @@ int main() {
   cout << "----------------\n";
   cout << endl << endl;
   // Display leaderboard
-  load();
+  // load();
   // Get player name
   cout << "Please enter your name to begin: ";
   cin >> playerName;
   cout << endl << endl;
-  // Rules
-  // Establish goals
-  cout << "You are attempting to break a randomly generated 4 color code combination made up of six possible colors. These colors can be in any order, and in any number." << endl;
-  // Establish input pattern
-  cout << "Type any 4 of the letter combinations listed below, seperated by a space. " << endl << endl;
-  // Prints codeElements
-  cout << "Code colors: ";
-  for (int i = 0; i < 6; i++) {
-    cout << "[" << codeElements[i] << "]";
-  }
-  cout << endl << endl;
-  cout << "After you have input your desired guess, hit the enter key. The engine will provide feeback based on your guess in order to provide clues to the solution." << endl << endl;
-  // Defines clues for the player
-  cout << "Feedback key: " << endl;
-  cout << "[WH] = Right color, right position." << endl;
-  cout << "[RD] = Right color, wrong position." << endl;
-  cout << "[  ] = Wrong color." << endl;
-  cout << endl;
-  cout << "You will be scored after you win or lose. You want the lowest score possible. Your score is calculated based on how many attempts you made, and how long it took for you to (or fail to) break the code." << endl << endl;
-  // glhf
-  cout << "Good luck, have fun!" << endl << endl;
-  // Start timer
-  auto start = steady_clock::now();
-  // Start core game loop.
-  cout << "You have " << chancesRemaining << " attempts to break the code.\n";
-  getPlayerInput();
-  cout << endl;
-  // Stop timer
-  auto stop = steady_clock::now() - start;
-  timeElapsed = duration_cast<milliseconds>(stop).count();
-  // Assign score
-  score = (9 - chancesRemaining) * timeElapsed;
-  cout << "Your score is: " << score << endl << endl;
+  // // Rules
+  // // Establish goals
+  // cout << "You are attempting to break a randomly generated 4 color code combination made up of six possible colors. These colors can be in any order, and in any number." << endl;
+  // // Establish input pattern
+  // cout << "Type any 4 of the letter combinations listed below, seperated by a space. " << endl << endl;
+  // // Prints codeElements
+  // cout << "Code colors: ";
+  // for (int i = 0; i < 6; i++) {
+  //   cout << "[" << codeElements[i] << "]";
+  // }
+  // cout << endl << endl;
+  // cout << "After you have input your desired guess, hit the enter key. The engine will provide feeback based on your guess in order to provide clues to the solution." << endl << endl;
+  // // Defines clues for the player
+  // cout << "Feedback key: " << endl;
+  // cout << "[WH] = Right color, right position." << endl;
+  // cout << "[RD] = Right color, wrong position." << endl;
+  // cout << "[  ] = Wrong color." << endl;
+  // cout << endl;
+  // cout << "You will be scored after you win or lose. You want the lowest score possible. Your score is calculated based on how many attempts you made, and how long it took for you to (or fail to) break the code." << endl << endl;
+  // // glhf
+  // cout << "Good luck, have fun!" << endl << endl;
+  // // Start timer
+  // auto start = steady_clock::now();
+  // // Start core game loop.
+  // cout << "You have " << chancesRemaining << " attempts to break the code.\n";
+  // getPlayerInput();
+  // cout << endl;
+  // // Stop timer
+  // auto stop = steady_clock::now() - start;
+  // timeElapsed = duration_cast<milliseconds>(stop).count();
+  // // Assign score
+  // score = (9 - chancesRemaining) * timeElapsed;
+  // cout << "Your score is: " << score << endl << endl;
   // Save player score and display leaderboard ranking
   save();
   // Terminate program
@@ -175,19 +174,18 @@ void load() {
 // Saves leaderboard
 void save() {
   Player newPlayer;
-  char newPlayerName[3];
 
-  for (int i = 0; i < playerName.length(); i++) {
+  for (int i = 0; i < 3; i++) {
     cout << playerName[i];
-    newPlayerName[i] = playerName[i];
+    playerName[i] = newPlayer.name[i];
   }
   newPlayer.score = score;
 
   newPlayer.print();
 
-  fstream file;
-  file.open("leaderboard.txt", ios::out);
-  if (file.is_open()) {
-    file.write((char*)&newPlayer, sizeof(newPlayer));
-  }
+  // fstream file;
+  // file.open("leaderboard.txt", ios::out);
+  // if (file.is_open()) {
+  //   file.write((char*)&newPlayer, sizeof(newPlayer));
+  // }
 }
