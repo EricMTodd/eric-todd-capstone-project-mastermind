@@ -25,8 +25,10 @@
   - The variable is written to the leaderboard file.
   - Leaderboard will have to be an array of player objects, sorted in descending order by score.
 
+## Resources
   - Figure out how to write an array of objects to a file. Combine array io techniques with object io techniques. Something about whitespace... Check that youtube video again: https://www.youtube.com/watch?v=SPfJ856eEN4&t=395s
   - Another possible solution is using vectors, illustrated here: https://stackoverflow.com/questions/37532631/read-class-objects-from-file-c
   - Since strings are objects themselves, when they are read from a file, they're actually pointing to a place in memory. When the new file executes, that place no longer exists which is the cause for the segmentation fault. Look into using dynamic char arrays to solve this issue.
   - Loop over a string: https://www.youtube.com/watch?v=s7w-q2RoIFg
   - Watch videos on c-strings/Chapter 8 in etext has some good c-string stuff.
+  - Object serialization with Boost API StackOverflow: https://stackoverflow.com/questions/523872/how-do-you-serialize-an-object-in-c

@@ -54,7 +54,7 @@ int main() {
   cout << "----------------\n";
   cout << endl << endl;
   // Display leaderboard
-  // load();
+  load();
   // Get player name
   cout << "Please enter your name to begin: ";
   cin >> playerName;
@@ -176,16 +176,15 @@ void save() {
   Player newPlayer;
 
   for (int i = 0; i < 3; i++) {
-    cout << playerName[i];
     playerName[i] = newPlayer.name[i];
   }
   newPlayer.score = score;
 
   newPlayer.print();
 
-  // fstream file;
-  // file.open("leaderboard.txt", ios::out);
-  // if (file.is_open()) {
-  //   file.write((char*)&newPlayer, sizeof(newPlayer));
-  // }
+  fstream file;
+  file.open("leaderboard.txt", ios::out);
+  if (file.is_open()) {
+    file.write((char*)&newPlayer, sizeof(newPlayer));
+  }
 }
