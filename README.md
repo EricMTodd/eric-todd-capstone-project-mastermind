@@ -25,6 +25,8 @@
   - The variable is written to the leaderboard file.
   - Leaderboard will have to be an array of player objects, sorted in descending order by score.
 
+  - Consider changing storage approach from object serialization, to each piece of info on it's own line. Then, putting names in one array, and scores in another. Then as you sort by score, you also move the names at the corresponding index.
+
 ## Resources
   - Figure out how to write an array of objects to a file. Combine array io techniques with object io techniques. Something about whitespace... Check that youtube video again: https://www.youtube.com/watch?v=SPfJ856eEN4&t=395s
   - Another possible solution is using vectors, illustrated here: https://stackoverflow.com/questions/37532631/read-class-objects-from-file-c
