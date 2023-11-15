@@ -200,8 +200,8 @@ void load() {
           names[namesIndex] = "EMPTY";
           namesIndex++;
         } else {
-          file << 0 << endl;
-          scores[scoresIndex] = "0";
+          file << "999999999" << endl;
+          scores[scoresIndex] = "999999999";
           scoresIndex++;
         }
       }
